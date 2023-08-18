@@ -17,11 +17,10 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+	color: #FFF;
+	font-family: Inter;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 200;
+	line-height: 1.5;
 }
