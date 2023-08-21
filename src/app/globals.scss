@@ -26,25 +26,7 @@ body {
 }
 
 .bold {
-  @apply font-bold;
-}
-
-.hero {
-  height: 100vh;
-  background-image: url(../../public/images/hero/hero-bg.png);
-  background-color: rgba(2, 15, 8, 0.5);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.hero:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(2, 15, 8, 0.5);
-  z-index: 1;
+  @apply font-bold leading-[1];
 }
 
 .menu {
@@ -77,4 +59,57 @@ body {
   .nav {
     @apply inline-flex flex-col gap-12 text-lg tracking-[0.1125rem] md:flex-row md:gap-6 md:text-sm md:items-center xl:gap-14;
   }
+}
+
+.btn-join {
+  position: relative;
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @media screen and (max-width: 767.98px) {
+      background-image: url(../../public/images/button/btn-frame-m.svg);
+      background-size: auto;
+      background-repeat: no-repeat;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1279.98px) {
+      background-image: url(../../public/images/button/btn-frame-t.svg);
+      background-size: auto;
+      background-repeat: no-repeat;
+    }
+    @media screen and (min-width: 1280px) {
+      background-image: url(../../public/images/button/btn-frame-d.svg);
+      background-size: auto;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &::after {
+    transform: rotate(180deg);
+  }
+}
+
+section {
+  background-color: rgba(2, 15, 8, 0.5);
+  background-size: cover;
+  background-repeat: no-repeat;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(2, 15, 8, 0.5);
+    z-index: 1;
+  }
+}
+
+.hero {
+  background-image: url(../../public/images/hero/hero-bg.png);
 }

@@ -9,7 +9,7 @@ export default function Header() {
     setOpen(!open);
   };
   return (
-    <header className="header absolute z-[2] w-full py-9 tracking-[0.0875rem]">
+    <header className="header absolute z-[3] w-full py-9 tracking-[0.0875rem]">
       <div className="container">
         <div className="flex justify-between">
           <Link href="./">
