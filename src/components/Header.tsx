@@ -2,11 +2,15 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+
 export default function Header() {
   const [open, setOpen] = useState(false);
 
+  
+  
   const handleOpen = () => {
-    setOpen(!open);
+		setOpen(!open);
+		document.body.style.overflow = !open ? 'hidden' : 'visible';
   };
   return (
     <header className="header absolute z-[3] w-full py-9 tracking-[0.0875rem]">
