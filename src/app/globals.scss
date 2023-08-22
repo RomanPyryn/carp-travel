@@ -52,6 +52,11 @@ body {
 }
 .hero {background-image: url(../../public/images/hero/hero-bg.png);}
 .about {background-image: url(../../public/images/about/about-bg.png);}
+.slide01 {background-image: url(../../public/images/services/serv-bg-1.png);}
+.slide02 {background-image: url(../../public/images/services/serv-bg-2.png);}
+.slide03 {background-image: url(../../public/images/services/serv-bg-3.png);}
+.slide04 {background-image: url(../../public/images/services/serv-bg-4.png);}
+.slide05 {background-image: url(../../public/images/services/serv-bg-5.png);}
 
 .section-title {
 	@apply uppercase font-medium text-[40px] leading-[1.4] -tracking-[1.6px] md:text-[67px] md:-tracking-[2.68px] md:leading-[1.17] xl:text-[98px] xl:-tracking-[3.92px] xl:leading-[1.22];
@@ -125,4 +130,21 @@ body {
   &::after {
     transform: rotate(180deg);
   }
+}
+
+.current-item {
+	position: relative;
+	color: #fff;
+	font-weight: 500;
+	padding-left: 16px;
+	&::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		transform: rotate(45deg) translate(50%, 50%);
+		width: 6px;
+		height: 6px;
+		background-color: #fff;
+	}
 }
