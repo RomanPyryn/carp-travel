@@ -2,19 +2,22 @@ import { FC } from 'react';
 import Image, { StaticImageData } from 'next/image';
 
 type slideProps = {
-  slideNum: string,
-  label: string,
-  text: string,
-  goTo: (index: number) => void,
-	index: number,
-	img: StaticImageData,
+  slideNum: string;
+  label: string;
+  text: string;
+  goTo: (index: number) => void;
+  index: number;
+  img: StaticImageData;
 };
 
 const Slide: FC<slideProps> = ({ slideNum, label, text, goTo, index, img }) => {
   return (
     <div className={`section slide0${slideNum} py-14 md:py-16 xl:py-[104px]`}>
       <div className="container smOnly:min-h-[740px]">
-        <div className="smOnly:space-y-6 mb-4 md:flex mdOnly:justify-between md:mb-10 xl:gap-40 xl:mb-5">
+        <div
+          data-swiper-parallax="-500"
+          className="smOnly:space-y-6 mb-4 md:flex mdOnly:justify-between md:mb-10 xl:gap-40 xl:mb-5"
+        >
           <h2 className="section-title">
             <span className="font-thin">WE</span> OFFER
           </h2>
@@ -25,20 +28,22 @@ const Slide: FC<slideProps> = ({ slideNum, label, text, goTo, index, img }) => {
         </div>
         <div className="relative smOnly:space-y-3 md:flex md:gap-5">
           <Image
+            data-swiper-parallax="-750"
             className="w-full md:w-[463px] md:h-[370px] xl:w-[607px] xl:h-[429px]"
             width={280}
             height={213}
             loading="lazy"
-            // placeholder="blur"
             alt="Nature"
             src={img}
-            // srcSet={`/images/services/serv-slide-${slideNum}@2x.png 2x`}
           />
-          <div className="flex flex-col justify-between gap-9 mdOnly:w-[221px]">
+          <div
+            data-swiper-parallax="-350"
+            className="flex flex-col justify-between gap-9 mdOnly:w-[221px]"
+          >
             <div className="smOnly:space-y-6 md:flex md:flex-col-reverse gap-6 xl:flex-row-reverse xl:gap-[70px]">
-              <p className="font-extralight smOnly:text-end leading-[2] tracking-[2.4px] text-xs">
+              <strong className="font-extralight smOnly:text-end leading-[2] tracking-[2.4px] text-xs">
                 {label}
-              </p>
+              </strong>
               <ul className="text-white/20 uppercase text-[20px] leading-[0.85] space-y-4 smOnly:max-w-[190px] md:text-[18px] md:leading-[0.82] xl:text-[28px] xl:leading-[0.86] xl:w-[280px] xl:space-y-6">
                 <li
                   className={index === 0 ? 'current-item' : ''}

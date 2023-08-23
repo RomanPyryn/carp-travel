@@ -1,13 +1,17 @@
 'use client';
 import Slide from './Slide';
 import React, { useRef, useState } from 'react';
-import { Swiper , SwiperSlide, SwiperRef } from 'swiper/react';
+import SwiperCore from 'swiper';
+import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react';
+import { Parallax } from 'swiper/modules';
 import 'swiper/css';
 import servImg1 from '../../public/images/services/serv-slide-1.png';
 import servImg2 from '../../public/images/services/serv-slide-2.png';
 import servImg3 from '../../public/images/services/serv-slide-3.png';
 import servImg4 from '../../public/images/services/serv-slide-4.png';
 import servImg5 from '../../public/images/services/serv-slide-5.png';
+
+SwiperCore.use([Parallax]);
 
 function Slider() {
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
@@ -30,10 +34,10 @@ function Slider() {
       ref={swiperRef}
       spaceBetween={0}
 			slidesPerView={1}
-			// effect="fade"
-			fadeEffect={{crossFade: true}}
+			effect="fade"
+			fadeEffect={{ crossFade: true }}
+			parallax={true}
       speed={600}
-      // scrollbar={{ draggable: false }}
       onSlideChange={handleSlideChange}
       onTransitionEnd={handleSlideChange}
 		>
