@@ -23,6 +23,12 @@ const CareerForm: React.FC = () => {
     },
   });
 
+  const [touchedFields, setTouchedFields] = useState<Record<string, boolean>>({
+    fullName: false,
+    email: false,
+    phone: false,
+  });
+
   const [isFullNameInvalid, setIsFullNameInvalid] = useState(false);
   const [isEmailInvalid, setIsEmailInvalid] = useState(false);
   const [isPhoneInvalid, setIsPhoneInvalid] = useState(false);
@@ -49,6 +55,13 @@ const CareerForm: React.FC = () => {
     setIsPhoneInvalid(!isValid);
   };
 
+  const onFieldBlur = (fieldName: string) => {
+    setTouchedFields(prevState => ({
+      ...prevState,
+      [fieldName]: true,
+    }));
+  };
+
   const isFormSubmitted = formState.isSubmitted && !formState.isValid;
 
   return (
@@ -58,7 +71,7 @@ const CareerForm: React.FC = () => {
           htmlFor="fullName"
           className={clsx(
             'label',
-            (isFullNameInvalid || (isFormSubmitted && !formState.isValid)) && 'error'
+            isFullNameInvalid && (touchedFields.phone || isFormSubmitted) && 'error'
           )}
         >
           Full Name
@@ -76,17 +89,22 @@ const CareerForm: React.FC = () => {
               type="text"
               className={clsx(
                 'input',
-                (isFullNameInvalid || (isFormSubmitted && !formState.isValid)) && 'error'
+                isFullNameInvalid && (touchedFields.phone || isFormSubmitted) && 'error'
               )}
               placeholder="John Smith"
-              onChange={e => {
+              onBlur={() => {
+                field.onBlur();
+                onFullNameChange(field.value); // перевірка валідності під час втрати фокусу
+                onFieldBlur('phone'); // позначка, що поле було доторкнуте
+							}}
+							onChange={e => {
                 field.onChange(e);
-                onFullNameChange(e.target.value);
+                setIsFullNameInvalid(false); // Прибираємо помилку при введенні тексту
               }}
             />
           )}
         />
-        {(isFullNameInvalid || (isFormSubmitted && !formState.isValid)) && (
+        {isFullNameInvalid && (touchedFields.phone || isFormSubmitted) && (
           <span className="error error-text label">X Incorrect name</span>
         )}
       </div>
@@ -96,7 +114,7 @@ const CareerForm: React.FC = () => {
           htmlFor="email"
           className={clsx(
             'label',
-            (isEmailInvalid || (isFormSubmitted && !formState.isValid)) && 'error'
+            isEmailInvalid && (touchedFields.phone || isFormSubmitted) && 'error'
           )}
         >
           E-mail
@@ -110,17 +128,22 @@ const CareerForm: React.FC = () => {
               type="email"
               className={clsx(
                 'input',
-                (isEmailInvalid || (isFormSubmitted && !formState.isValid)) && 'error'
+                isEmailInvalid && (touchedFields.phone || isFormSubmitted) && 'error'
               )}
               placeholder="johnsmith@email.com"
+              onBlur={() => {
+                field.onBlur();
+                onEmailChange(field.value);
+                onFieldBlur('email');
+              }}
               onChange={e => {
                 field.onChange(e);
-                onEmailChange(e.target.value);
+                setIsEmailInvalid(false); // Прибираємо помилку при введенні тексту
               }}
             />
           )}
         />
-        {(isEmailInvalid || (isFormSubmitted && !formState.isValid)) && (
+        {isEmailInvalid && (touchedFields.phone || isFormSubmitted) && (
           <span className="error error-text label">X Incorrect email</span>
         )}
       </div>
@@ -143,7 +166,7 @@ const CareerForm: React.FC = () => {
           htmlFor="phone"
           className={clsx(
             'label',
-            (isPhoneInvalid || (isFormSubmitted && !formState.isValid)) && 'error'
+            isPhoneInvalid && (touchedFields.phone || isFormSubmitted) && 'error'
           )}
         >
           Phone
@@ -157,18 +180,23 @@ const CareerForm: React.FC = () => {
               type="tel"
               className={clsx(
                 'input  phone',
-                (isPhoneInvalid || (isFormSubmitted && !formState.isValid)) && 'error'
+                isPhoneInvalid && (touchedFields.phone || isFormSubmitted) && 'error'
               )}
               placeholder="(097) 12 34 567"
-              onChange={e => {
+              onBlur={() => {
+                field.onBlur();
+                onPhoneChange(field.value); // перевірка валідності під час втрати фокусу
+                onFieldBlur('phone'); // позначка, що поле було доторкнуте
+							}}
+							onChange={e => {
                 field.onChange(e);
-                onPhoneChange(e.target.value);
+                setIsPhoneInvalid(false); // Прибираємо помилку при введенні тексту
               }}
             />
           )}
         />
         <span className="absolute left-2 bottom-0 font-[13px] leading-[1.85]">+ 38</span>
-        {(isPhoneInvalid || (isFormSubmitted && !formState.isValid)) && (
+        {isPhoneInvalid && (touchedFields.phone || isFormSubmitted) && (
           <span className="error error-text label">X Incorrect name</span>
         )}
       </div>
