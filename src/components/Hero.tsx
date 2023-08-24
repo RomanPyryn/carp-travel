@@ -1,4 +1,4 @@
-function Hero() {
+export default function Hero() {
   return (
     <section className="section hero pt-28 pb-14 md:pt-32 md:pb-16 xl:pt-32 xl:pb-28">
       <div className="container smOnly:space-y-6 md:flex md:gap-12 xl:gap-[200px]">
@@ -21,5 +21,3 @@ function Hero() {
     </section>
   );
 }
-
-export default Hero;

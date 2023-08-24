@@ -13,7 +13,7 @@ type slideProps = {
 const Slide: FC<slideProps> = ({ slideNum, label, text, goTo, index, img }) => {
   return (
     <div className={`section slide0${slideNum} py-14 md:py-16 xl:py-[104px]`}>
-      <div className="container smOnly:min-h-[740px]">
+      <div className="container smOnly:min-h-[750px]">
         <div
           data-swiper-parallax="-500"
           className="smOnly:space-y-6 mb-4 md:flex mdOnly:justify-between md:mb-10 xl:gap-40 xl:mb-5"
@@ -32,13 +32,13 @@ const Slide: FC<slideProps> = ({ slideNum, label, text, goTo, index, img }) => {
             className="w-full md:w-[463px] md:h-[370px] xl:w-[607px] xl:h-[429px]"
             width={280}
             height={213}
-            loading="lazy"
+            // loading="lazy"
             alt="Nature"
             src={img}
           />
           <div
             data-swiper-parallax="-350"
-            className="flex flex-col justify-between gap-9 mdOnly:w-[221px]"
+            className="flex flex-col smOnly:h-full justify-between gap-9 mdOnly:w-[221px]"
           >
             <div className="smOnly:space-y-6 md:flex md:flex-col-reverse gap-6 xl:flex-row-reverse xl:gap-[70px]">
               <strong className="font-extralight smOnly:text-end leading-[2] tracking-[2.4px] text-xs">

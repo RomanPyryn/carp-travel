@@ -1,4 +1,4 @@
-function About() {
+export default function About() {
   return (
     <section id="about" className="section about py-14 md:py-16 xl:py-28">
       <div className="container space-y-10 md:space-y-16">
@@ -35,5 +35,3 @@ function About() {
     </section>
   );
 }
-
-export default About;
