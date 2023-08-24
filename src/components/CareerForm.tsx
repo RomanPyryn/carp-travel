@@ -51,7 +51,10 @@ const CareerForm: React.FC = () => {
       <div className="relative">
         <label
           htmlFor="fullName"
-          className={clsx('label', isFormSubmitted && isFullNameInvalid && 'error')}
+          className={clsx(
+            'label',
+            (isFullNameInvalid || (isFormSubmitted && !formState.isValid)) && 'error'
+          )}
         >
           Full Name
         </label>
@@ -66,7 +69,10 @@ const CareerForm: React.FC = () => {
             <input
               {...field}
               type="text"
-              className={clsx('input', isFullNameInvalid && isFormSubmitted && 'error')}
+              className={clsx(
+                'input',
+                (isFullNameInvalid || (isFormSubmitted && !formState.isValid)) && 'error'
+              )}
               placeholder="John Smith"
               onChange={e => {
                 field.onChange(e);
@@ -75,7 +81,7 @@ const CareerForm: React.FC = () => {
             />
           )}
         />
-        {isFullNameInvalid && isFormSubmitted && (
+        {(isFullNameInvalid || (isFormSubmitted && !formState.isValid)) && (
           <span className="error error-text label">X Incorrect name</span>
         )}
       </div>
@@ -83,7 +89,7 @@ const CareerForm: React.FC = () => {
       <div className="relative">
         <label
           htmlFor="email"
-          className={clsx('label', isEmailInvalid && isFormSubmitted && 'error')}
+          className={clsx('label', (isEmailInvalid || (isFormSubmitted && !formState.isValid)) && 'error')}
         >
           E-mail
         </label>
@@ -94,7 +100,7 @@ const CareerForm: React.FC = () => {
             <input
               {...field}
               type="email"
-              className={clsx('input', isEmailInvalid && isFormSubmitted && 'error')}
+              className={clsx('input', (isEmailInvalid || (isFormSubmitted && !formState.isValid)) && 'error')}
               placeholder="johnsmith@email.com"
               onChange={e => {
                 field.onChange(e);
@@ -103,7 +109,7 @@ const CareerForm: React.FC = () => {
             />
           )}
         />
-        {isEmailInvalid && isFormSubmitted && (
+        {(isEmailInvalid || (isFormSubmitted && !formState.isValid)) && (
           <span className="error error-text label">X Incorrect email</span>
         )}
       </div>
@@ -122,17 +128,38 @@ const CareerForm: React.FC = () => {
       </div>
 
       <div className="relative">
-        <label htmlFor="phone" className="label">
+        <label
+          htmlFor="phone"
+          className={clsx(
+            'label',
+            // (isEmailInvalid || (isFormSubmitted && !formState.isValid)) && 'error'
+          )}
+        >
           Phone
         </label>
         <Controller
           name="phone"
           control={control}
           render={({ field }) => (
-            <input {...field} type="tel" className="input phone" placeholder="(097) 12 34 567" />
+            <input
+              {...field}
+              type="tel"
+              className={clsx(
+                'input  phone',
+                // (isEmailInvalid || (isFormSubmitted && !formState.isValid)) && 'error'
+              )}
+              placeholder="(097) 12 34 567"
+              // onChange={e => {
+              //   field.onChange(e);
+              //   onEmailChange(e.target.value);
+              // }}
+            />
           )}
         />
         <span className="absolute left-2 bottom-0 font-[13px] leading-[1.85]">+ 38</span>
+        {/* {(isEmailInvalid || (isFormSubmitted && !formState.isValid)) && (
+          <span className="error error-text label">X Incorrect name</span>
+        )} */}
       </div>
 
       <div>
