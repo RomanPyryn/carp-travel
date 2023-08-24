@@ -1,6 +1,7 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import clsx from 'clsx';
 
 interface FormData {
   fullName: string;
@@ -12,50 +13,99 @@ interface FormData {
 }
 
 const CareerForm: React.FC = () => {
-  const { control, handleSubmit } = useForm<FormData>({
+  const { control, handleSubmit, formState } = useForm<FormData>({
     defaultValues: {
       fullName: '',
       email: '',
       position: '',
-      phone: '+ 38 ',
+      phone: '',
       message: '',
     },
   });
 
+  const [isFullNameInvalid, setIsFullNameInvalid] = useState(false);
+  const [isEmailInvalid, setIsEmailInvalid] = useState(false);
+
   const onSubmit = (data: FormData) => {
-    if (data.consent) {
-      console.log('Consent given:', data);
+    if (data.consent && !isFullNameInvalid && !isEmailInvalid) {
+      const phoneWithCode = '+38' + data.phone;
+      console.log('Consent given:', { ...data, phone: phoneWithCode });
     } else {
       console.log('Not agree!');
     }
   };
 
+  const onFullNameChange = (value: string) => {
+    const isValid = /^[a-zA-Zа-яА-Я]{2,}$/.test(value);
+    setIsFullNameInvalid(!isValid);
+  };
+  const onEmailChange = (value: string) => {
+    const isValid = /^[a-zA-Zа-яА-Я0-9]+@[a-zA-Zа-яА-Я0-9]+\.[A-Za-zа-яА-Я]+$/.test(value);
+    setIsEmailInvalid(!isValid);
+  };
+
+  const isFormSubmitted = formState.isSubmitted && !formState.isValid;
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-6 font-extralight">
-      <div>
-        <label htmlFor="fullName" className="label">
+    <form onSubmit={handleSubmit(onSubmit)} className="form">
+      <div className="relative">
+        <label
+          htmlFor="fullName"
+          className={clsx('label', isFormSubmitted && isFullNameInvalid && 'error')}
+        >
           Full Name
         </label>
         <Controller
           name="fullName"
           control={control}
+          rules={{
+            required: true,
+            pattern: /^(?=.*[a-zA-Zа-яА-Я]).{2,}$/,
+          }}
           render={({ field }) => (
-            <input {...field} type="text" className="input" placeholder="John Smith" />
+            <input
+              {...field}
+              type="text"
+              className={clsx('input', isFullNameInvalid && isFormSubmitted && 'error')}
+              placeholder="John Smith"
+              onChange={e => {
+                field.onChange(e);
+                onFullNameChange(e.target.value);
+              }}
+            />
           )}
         />
+        {isFullNameInvalid && isFormSubmitted && (
+          <span className="error error-text label">X Incorrect name</span>
+        )}
       </div>
 
-      <div>
-        <label htmlFor="email" className="label">
+      <div className="relative">
+        <label
+          htmlFor="email"
+          className={clsx('label', isEmailInvalid && isFormSubmitted && 'error')}
+        >
           E-mail
         </label>
         <Controller
           name="email"
           control={control}
           render={({ field }) => (
-            <input {...field} type="email" className="input" placeholder="johnsmith@email.com" />
+            <input
+              {...field}
+              type="email"
+              className={clsx('input', isEmailInvalid && isFormSubmitted && 'error')}
+              placeholder="johnsmith@email.com"
+              onChange={e => {
+                field.onChange(e);
+                onEmailChange(e.target.value);
+              }}
+            />
           )}
         />
+        {isEmailInvalid && isFormSubmitted && (
+          <span className="error error-text label">X Incorrect email</span>
+        )}
       </div>
 
       <div>
@@ -71,7 +121,7 @@ const CareerForm: React.FC = () => {
         />
       </div>
 
-      <div>
+      <div className="relative">
         <label htmlFor="phone" className="label">
           Phone
         </label>
@@ -79,9 +129,10 @@ const CareerForm: React.FC = () => {
           name="phone"
           control={control}
           render={({ field }) => (
-            <input {...field} type="tel" className="input" placeholder=" (097) 12 34 567" />
+            <input {...field} type="tel" className="input phone" placeholder="(097) 12 34 567" />
           )}
         />
+        <span className="absolute left-2 bottom-0 font-[13px] leading-[1.85]">+ 38</span>
       </div>
 
       <div>
@@ -118,7 +169,7 @@ const CareerForm: React.FC = () => {
         />
       </div>
 
-      <button type="submit" className="btn ml-auto">
+      <button type="submit" className="block w-auto ml-auto">
         SEND
       </button>
     </form>

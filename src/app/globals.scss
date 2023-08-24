@@ -181,11 +181,23 @@ body {
 .whyUs-text {
   @apply font-extralight text-[12px] leading-[1.67];
 }
+.form {
+	@apply p-6 space-y-6 font-extralight;
+	& .error {
+		@apply text-red-600;
+	}
+}
 .label {
   @apply block text-[12px] tracking-[2.4px] leading-[2];
 }
 .input {
-  @apply bg-white/5 font-[13px] leading-[1.85] px-2 w-full;
+  @apply bg-white/5 font-[13px] leading-[1.85] px-2 w-full outline-none;
+	&.phone {
+		@apply pl-11;
+	}
+}
+.error-text {
+	@apply absolute ease-in right-0 -bottom-[24px];
 }
 
 .agreement {
