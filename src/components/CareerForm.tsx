@@ -25,9 +25,10 @@ const CareerForm: React.FC = () => {
 
   const [isFullNameInvalid, setIsFullNameInvalid] = useState(false);
   const [isEmailInvalid, setIsEmailInvalid] = useState(false);
+  const [isPhoneInvalid, setIsPhoneInvalid] = useState(false);
 
   const onSubmit = (data: FormData) => {
-    if (data.consent && !isFullNameInvalid && !isEmailInvalid) {
+    if (data.consent && !isFullNameInvalid && !isEmailInvalid && !isPhoneInvalid) {
       const phoneWithCode = '+38' + data.phone;
       console.log('Consent given:', { ...data, phone: phoneWithCode });
     } else {
@@ -42,6 +43,10 @@ const CareerForm: React.FC = () => {
   const onEmailChange = (value: string) => {
     const isValid = /^[a-zA-Zа-яА-Я0-9]+@[a-zA-Zа-яА-Я0-9]+\.[A-Za-zа-яА-Я]+$/.test(value);
     setIsEmailInvalid(!isValid);
+  };
+  const onPhoneChange = (value: string) => {
+    const isValid = /^[0-9\s()+-]+$/.test(value) && value.replace(/[^0-9]/g, '').length === 10;
+    setIsPhoneInvalid(!isValid);
   };
 
   const isFormSubmitted = formState.isSubmitted && !formState.isValid;
@@ -89,7 +94,10 @@ const CareerForm: React.FC = () => {
       <div className="relative">
         <label
           htmlFor="email"
-          className={clsx('label', (isEmailInvalid || (isFormSubmitted && !formState.isValid)) && 'error')}
+          className={clsx(
+            'label',
+            (isEmailInvalid || (isFormSubmitted && !formState.isValid)) && 'error'
+          )}
         >
           E-mail
         </label>
@@ -100,7 +108,10 @@ const CareerForm: React.FC = () => {
             <input
               {...field}
               type="email"
-              className={clsx('input', (isEmailInvalid || (isFormSubmitted && !formState.isValid)) && 'error')}
+              className={clsx(
+                'input',
+                (isEmailInvalid || (isFormSubmitted && !formState.isValid)) && 'error'
+              )}
               placeholder="johnsmith@email.com"
               onChange={e => {
                 field.onChange(e);
@@ -132,7 +143,7 @@ const CareerForm: React.FC = () => {
           htmlFor="phone"
           className={clsx(
             'label',
-            // (isEmailInvalid || (isFormSubmitted && !formState.isValid)) && 'error'
+            (isPhoneInvalid || (isFormSubmitted && !formState.isValid)) && 'error'
           )}
         >
           Phone
@@ -146,20 +157,20 @@ const CareerForm: React.FC = () => {
               type="tel"
               className={clsx(
                 'input  phone',
-                // (isEmailInvalid || (isFormSubmitted && !formState.isValid)) && 'error'
+                (isPhoneInvalid || (isFormSubmitted && !formState.isValid)) && 'error'
               )}
               placeholder="(097) 12 34 567"
-              // onChange={e => {
-              //   field.onChange(e);
-              //   onEmailChange(e.target.value);
-              // }}
+              onChange={e => {
+                field.onChange(e);
+                onPhoneChange(e.target.value);
+              }}
             />
           )}
         />
         <span className="absolute left-2 bottom-0 font-[13px] leading-[1.85]">+ 38</span>
-        {/* {(isEmailInvalid || (isFormSubmitted && !formState.isValid)) && (
+        {(isPhoneInvalid || (isFormSubmitted && !formState.isValid)) && (
           <span className="error error-text label">X Incorrect name</span>
-        )} */}
+        )}
       </div>
 
       <div>
