@@ -29,7 +29,7 @@ const Slide: FC<slideProps> = ({ slideNum, label, text, goTo, index, img }) => {
         <div className="relative smOnly:space-y-3 md:flex md:gap-5">
           <Image
             data-swiper-parallax="-750"
-            className="w-full md:w-[463px] md:h-[370px] xl:w-[607px] xl:h-[429px]"
+            className="w-full h-[213px] object-cover md:w-[463px] md:h-[370px] xl:w-[607px] xl:h-[429px]"
             width={280}
             height={213}
             // loading="lazy"

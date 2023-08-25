@@ -41,7 +41,6 @@ const CareerForm: React.FC = () => {
       console.log('Consent given:', { ...data, phone: phoneWithCode });
 		} else {
 			toast.error('Fill in the required fields and give consent');
-      console.log('Not agree!');
     }
   };
 
@@ -90,7 +89,6 @@ const CareerForm: React.FC = () => {
                 control={control}
                 rules={{
                   required: true,
-                  pattern: /^(?=.*[a-zA-Zа-яА-Я]).{2,}$/,
                 }}
                 render={({ field }) => (
                   <input
@@ -130,7 +128,10 @@ const CareerForm: React.FC = () => {
               </label>
               <Controller
                 name="email"
-                control={control}
+								control={control}
+								rules={{
+                  required: true,
+                }}
                 render={({ field }) => (
                   <input
                     {...field}
@@ -182,7 +183,10 @@ const CareerForm: React.FC = () => {
               </label>
               <Controller
                 name="phone"
-                control={control}
+								control={control}
+								rules={{
+                  required: true,
+                }}
                 render={({ field }) => (
                   <input
                     {...field}
