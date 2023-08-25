@@ -49,7 +49,7 @@ export default function Career() {
         </div>
       </section>
       <section className="section career py-14">
-        <div className="container space-y-9">
+        <div className="container space-y-6">
           <p className="section-text max-w-[180px] ml-auto">
             Don&apos;t miss your opportunity! Fill out the form right now and join our team!
 					</p>

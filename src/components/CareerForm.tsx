@@ -33,7 +33,8 @@ const CareerForm: React.FC = () => {
   const [isEmailInvalid, setIsEmailInvalid] = useState(false);
   const [isPhoneInvalid, setIsPhoneInvalid] = useState(false);
 
-  const onSubmit = (data: FormData) => {
+	const onSubmit = (data: FormData) => {
+		
     if (data.consent && !isFullNameInvalid && !isEmailInvalid && !isPhoneInvalid) {
       const phoneWithCode = '+38' + data.phone;
       console.log('Consent given:', { ...data, phone: phoneWithCode });
@@ -74,7 +75,7 @@ const CareerForm: React.FC = () => {
             isFullNameInvalid && (touchedFields.phone || isFormSubmitted) && 'error'
           )}
         >
-          Full Name
+          Full Name *
         </label>
         <Controller
           name="fullName"
@@ -94,12 +95,12 @@ const CareerForm: React.FC = () => {
               placeholder="John Smith"
               onBlur={() => {
                 field.onBlur();
-                onFullNameChange(field.value); // перевірка валідності під час втрати фокусу
-                onFieldBlur('phone'); // позначка, що поле було доторкнуте
-							}}
-							onChange={e => {
+                onFullNameChange(field.value);
+                onFieldBlur('phone');
+              }}
+              onChange={e => {
                 field.onChange(e);
-                setIsFullNameInvalid(false); // Прибираємо помилку при введенні тексту
+                setIsFullNameInvalid(false);
               }}
             />
           )}
@@ -117,7 +118,7 @@ const CareerForm: React.FC = () => {
             isEmailInvalid && (touchedFields.phone || isFormSubmitted) && 'error'
           )}
         >
-          E-mail
+          E-mail *
         </label>
         <Controller
           name="email"
@@ -138,7 +139,7 @@ const CareerForm: React.FC = () => {
               }}
               onChange={e => {
                 field.onChange(e);
-                setIsEmailInvalid(false); // Прибираємо помилку при введенні тексту
+                setIsEmailInvalid(false);
               }}
             />
           )}
@@ -169,7 +170,7 @@ const CareerForm: React.FC = () => {
             isPhoneInvalid && (touchedFields.phone || isFormSubmitted) && 'error'
           )}
         >
-          Phone
+          Phone *
         </label>
         <Controller
           name="phone"
@@ -185,12 +186,12 @@ const CareerForm: React.FC = () => {
               placeholder="(097) 12 34 567"
               onBlur={() => {
                 field.onBlur();
-                onPhoneChange(field.value); // перевірка валідності під час втрати фокусу
-                onFieldBlur('phone'); // позначка, що поле було доторкнуте
-							}}
-							onChange={e => {
+                onPhoneChange(field.value);
+                onFieldBlur('phone');
+              }}
+              onChange={e => {
                 field.onChange(e);
-                setIsPhoneInvalid(false); // Прибираємо помилку при введенні тексту
+                setIsPhoneInvalid(false);
               }}
             />
           )}
@@ -235,7 +236,10 @@ const CareerForm: React.FC = () => {
         />
       </div>
 
-      <button type="submit" className="block w-auto ml-auto">
+      <button
+        type="submit"
+        className="btn-send"
+      >
         SEND
       </button>
     </form>

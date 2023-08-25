@@ -46,7 +46,7 @@ const Slide: FC<slideProps> = ({ slideNum, label, text, goTo, index, img }) => {
               </strong>
               <ul className="text-white/20 uppercase text-[20px] leading-[0.85] space-y-4 smOnly:max-w-[190px] md:text-[18px] md:leading-[0.82] xl:text-[28px] xl:leading-[0.86] xl:w-[280px] xl:space-y-6">
                 <li
-                  className={index === 0 ? 'current-item' : ''}
+                  className={index === 0 ? 'current-item' : 'slide-item'}
                   aria-label="Go to slide 1"
                   role="button"
                   onClick={() => goTo(0)}
@@ -54,7 +54,7 @@ const Slide: FC<slideProps> = ({ slideNum, label, text, goTo, index, img }) => {
                   ATVs Traveling
                 </li>
                 <li
-                  className={index == 1 ? 'current-item' : ''}
+                  className={index == 1 ? 'current-item' : 'slide-item'}
                   aria-label="Go to slide 2"
                   role="button"
                   onClick={() => goTo(1)}
@@ -62,7 +62,7 @@ const Slide: FC<slideProps> = ({ slideNum, label, text, goTo, index, img }) => {
                   Rock climbing
                 </li>
                 <li
-                  className={index == 2 ? 'current-item' : ''}
+                  className={index == 2 ? 'current-item' : 'slide-item'}
                   aria-label="Go to slide 3"
                   role="button"
                   onClick={() => goTo(2)}
@@ -70,7 +70,7 @@ const Slide: FC<slideProps> = ({ slideNum, label, text, goTo, index, img }) => {
                   Hot air ballooning
                 </li>
                 <li
-                  className={index == 3 ? 'current-item' : ''}
+                  className={index == 3 ? 'current-item' : 'slide-item'}
                   aria-label="Go to slide 4"
                   role="button"
                   onClick={() => goTo(3)}
@@ -78,7 +78,7 @@ const Slide: FC<slideProps> = ({ slideNum, label, text, goTo, index, img }) => {
                   Skydiving
                 </li>
                 <li
-                  className={index == 4 ? 'current-item' : ''}
+                  className={index == 4 ? 'current-item' : 'slide-item'}
                   aria-label="Go to slide 5"
                   role="button"
                   onClick={() => goTo(4)}

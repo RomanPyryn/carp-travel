@@ -15,7 +15,7 @@ export default function Hero() {
             We offer you unforgettable trips to the most beautiful parts of the Carpathians. Enjoy
             stunning views, exciting expeditions, and the best service!
 					</p>
-					<button className="btn-join bold uppercase bg-white/10 w-full py-[18px] text-[17px] leading-[1] md:text-lg md:py-[14px] md:leading-[1.22] xl:text-[32px] xl:py-[16px]">Join now</button>
+					<button className="btn-join  relative bold uppercase bg-white/10 w-full py-[18px] text-[17px] leading-[1] md: text-lg md:py-[14px] md:leading-[1.22] xl:text-[32px] xl:py-[16px] transition-all duration-300 ease-in hover:bg-white/20">Join now</button>
         </div>
       </div>
     </section>
