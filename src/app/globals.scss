@@ -34,7 +34,15 @@ body {
   z-index: 2;
 }
 
+
 .section {
+	padding: 56px 0;
+	@media (min-width: 768px) {
+		padding: 64px 0;
+	}
+	@media (min-width: 768px) {
+		padding: 104px 0;
+	}
   position: relative;
   background-size: cover;
   background-position-x: 20%;
@@ -175,16 +183,16 @@ body {
 }
 
 .whyUs-item {
-  @apply space-y-2;
+  @apply space-y-2 xl:space-y-0 xl:flex xl:gap-6 xl:justify-end;
 }
 .whyUs-subtitle {
-  @apply font-normal text-[14px] leading-[1.43];
+  @apply font-normal text-[14px] leading-[1.43] md:text-[16px] md:leading-[1.25] xl:max-w-[260px] xl:text-[16px] xl:leading-[1.33];
 }
 .whyUs-text {
-  @apply font-extralight text-[12px] leading-[1.67];
+  @apply font-extralight text-[12px] leading-[1.67] xl:max-w-[285px];
 }
 .form {
-	@apply space-y-4 font-extralight;
+	@apply space-y-4 font-extralight md:space-y-2 text-[13px] leading-[1.85] xl:text-[20px];
 	& .error {
 		@apply text-red-600;
 	}
@@ -195,11 +203,11 @@ body {
 .input {
   @apply bg-white/5 font-[13px] leading-[1.85] px-2 w-full outline-none;
 	&.phone {
-		@apply pl-11;
+		@apply pl-11 xl:pl-14;
 	}
 }
 .error-text {
-	@apply absolute ease-in right-0 -bottom-[24px];
+	@apply absolute ease-in right-0 -bottom-[24px] text-start;
 }
 
 .agreement {
@@ -232,7 +240,7 @@ body {
 	background-color: white;
 }
 .btn-send {
-	@apply block font-medium text-[30px] leading-[1.33] p-[5px] border border-transparent w-auto ml-auto transition-all duration-300 ease-in hover:scale-[1.05] hover:border-white hover:bg-white/5;
+	@apply block font-medium text-[30px] leading-[1.33] p-[5px] border border-transparent w-auto smOnly:ml-auto transition-all duration-300 ease-in hover:scale-[1.05] hover:border-white hover:bg-white/5 xl:text-[32px];
 }
 
 .visually-hidden {
