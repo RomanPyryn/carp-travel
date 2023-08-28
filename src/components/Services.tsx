@@ -1,10 +1,10 @@
 'use client';
-import Slider from './Slider';
+import ServSlider from './ServSlider';
 
 export default function Services() {
   return (
     <section className="services">
-			<Slider/>
+			<ServSlider/>
     </section>
   );
 }
