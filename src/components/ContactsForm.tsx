@@ -56,8 +56,8 @@ const ContactsForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
-      <div className="smOnly:space-y-4 md:grid md:grid-cols-2 gap-5">
-        <div className="space-y-4">
+      <div className="smOnly:space-y-4 mdOnly:grid md:grid-cols-2 md:gap-5 xl:space-y-10">
+        <div className="space-y-4 xl:space-y-0 xl:grid xl:grid-cols-2 xl:gap-7">
           <div className="relative">
             <label
               htmlFor="fullName"
@@ -153,14 +153,14 @@ const ContactsForm: React.FC = () => {
             render={({ field }) => (
               <textarea
                 {...field}
-                className="input min-h-[200px] md:min-h-[224px] xl:min-h-[268px]"
+                className="input min-h-[190px] md:min-h-[220px] xl:min-h-[170px]"
                 style={{ resize: 'none' }}
               />
             )}
           />
         </div>
       </div>
-      <button type="submit" className="btn-send">
+      <button type="submit" className="btn-send ml-auto">
         SEND
       </button>
     </form>

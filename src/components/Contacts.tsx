@@ -7,7 +7,8 @@ export default function Contacts() {
         <h2 className="section-title mb-9 xl:mb-20">
           <span className="font-thin">Contact</span> us
         </h2>
-        <div className="smOnly:space-y-6 mdOnly:grid mdOnly:grid-cols-2 mdOnly:mb-16 xl:flex xl:flex-col justify-between">
+				<div className="xl:grid xl:grid-cols-2 xl:gap-[260px]">
+					<div className="smOnly:space-y-6 mdOnly:grid mdOnly:grid-cols-2 mdOnly:mb-16 xl:flex xl:flex-col justify-between">
           <div className="space-y-6 xl:space-y-16  xl:mb-32">
             <div className="contacts-block justify-end">
               <div className="">
@@ -35,6 +36,7 @@ export default function Contacts() {
 					</div>
 				</div>
 				<ContactsForm/>
+				</div>
       </div>
     </section>
   );

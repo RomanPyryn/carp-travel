@@ -7,6 +7,8 @@ import Image from 'next/image';
 import galImg1 from '../../public/images/gallery/gallery-1.png';
 import galImg2 from '../../public/images/gallery/gallery-2.png';
 import galImg3 from '../../public/images/gallery/gallery-3.png';
+import GalBtnNext from './GalBtnNext';
+import GalBtnBack from './GalBtnBack';
 
 const GalSlider: React.FC = () => {
   const settings = {
@@ -15,8 +17,8 @@ const GalSlider: React.FC = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,
-    nextArrow: <button className="slick-next">NEXT</button>,
-    prevArrow: <button className="slick-prev">BACK</button>,
+    nextArrow: <GalBtnNext />,
+    prevArrow: <GalBtnBack />,
   };
 
   return (
