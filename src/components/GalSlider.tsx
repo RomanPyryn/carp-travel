@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
 import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Image from 'next/image';
 import galImg1 from '../../public/images/gallery/gallery-1.png';
 import galImg2 from '../../public/images/gallery/gallery-2.png';
@@ -10,11 +10,9 @@ import galImg3 from '../../public/images/gallery/gallery-3.png';
 
 const GalSlider: React.FC = () => {
   const settings = {
-    centerMode: true,
-    centerPadding: '0',
     infinite: true,
     speed: 600,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,
     nextArrow: <button className="slick-next">NEXT</button>,

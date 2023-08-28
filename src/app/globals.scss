@@ -260,26 +260,25 @@ body {
   .gallery-img {
     @apply w-full;
   }
-	.slick-track {
-		@apply h-[350px];
-	}
+  // .slick-track {
+  // 	@apply h-[350px];
+  // }
   .slick-slide {
-		// &.slick-current {
-		// 	@apply md:max-w-[415px] md:h-[294px];
-    // }
-    // @apply md:max-w-[121px] md:h-[87px];
-    // &.slick-current {
-    // 	@apply md:max-w-[415px] md:h-[294px] md:mx-5;
-    // 	& .gallery-slide-img {
-    // 	@apply md:max-w-[415px] md:h-[294px] ;
-    // 	}
-    // }
-    // & .gallery-slide-img {
-    // 	@apply md:max-w-[121px] md:h-[87px]
-    // }
+    & .gallery-slide-img {
+      @apply md:w-[740px] md:h-[525px] md:mx-auto;
+    }
   }
   .slick-next,
   .slick-prev {
-    @apply w-10 h-10 cursor-pointer text-white font-thin text-[33px] leading-[1.33] p-[5px] border border-transparent transition-all duration-300 ease-in hover:scale-[1.05] hover:border-white hover:bg-white/5;
+    @apply absolute top-full w-auto h-12 transform-none cursor-pointer text-white font-thin text-[33px] leading-[1.33] p-[5px] border-[1px] border-transparent transition-all duration-300 ease-in hover:scale-[1.05] hover:border-white hover:bg-white/5 hover:text-white focus:scale-[1.05] focus:border-white focus:bg-white/5 focus:text-white xl:top-[50%];
+    &::before {
+      @apply hidden;
+    }
+  }
+  .slick-prev {
+    @apply left-10 z-[2];
+  }
+  .slick-next {
+    @apply right-10;
   }
 }
