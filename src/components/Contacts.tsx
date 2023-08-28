@@ -1,3 +1,5 @@
+import ContactsForm from "./ContactsForm";
+
 export default function Contacts() {
   return (
     <section className="contacts section">
@@ -31,7 +33,8 @@ export default function Contacts() {
               <p className="contacts-label text-end xl:text-start">Follow us</p>
             
 					</div>
-        </div>
+				</div>
+				<ContactsForm/>
       </div>
     </section>
   );
