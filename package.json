@@ -1,14 +1,14 @@
 {
   "name": "carp-travel",
   "version": "0.1.0",
-	"homepage": "https://github.com/RomanPyryn/carp-travel",
+  "homepage": "https://github.com/RomanPyryn/carp-travel",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-		"deploy": "npm run build && gh-pages -d build"
+    "deploy": "npm run build && gh-pages -d build"
   },
   "dependencies": {
     "@types/node": "20.5.0",
