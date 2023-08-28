@@ -3,8 +3,8 @@ import ServSlider from './ServSlider';
 
 export default function Services() {
   return (
-    <section className="services">
-			<ServSlider/>
+    <section id="services" className="services">
+      <ServSlider />
     </section>
   );
 }
