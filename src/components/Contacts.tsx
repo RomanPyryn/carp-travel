@@ -32,16 +32,36 @@ export default function Contacts() {
             </div>
             <div className="contacts-block flex-row-reverse justify-start  md:justify-end xl:flex-row xl:self-end">
               <div className="w-[100px]">
-                <a href={'facebook.com'} className="contacts-link">
+                <a
+                  href={'facebook.com'}
+                  className="contacts-link"
+                  rel="noopener noreferrer nofollow"
+                  target="_blank"
+                >
                   facebook
                 </a>
-                <a href={'https://www.instagram.com/'} className="contacts-link">
+                <a
+                  href={'https://www.instagram.com/'}
+                  className="contacts-link"
+                  rel="noopener noreferrer nofollow"
+                  target="_blank"
+                >
                   instagram
                 </a>
-                <a href={'https://www.youtube.com'} className="contacts-link">
+                <a
+                  href={'https://www.youtube.com'}
+                  className="contacts-link"
+                  rel="noopener noreferrer nofollow"
+                  target="_blank"
+                >
                   youtube
                 </a>
-                <a href={'https://www.tiktok.com/'} className="contacts-link">
+                <a
+                  href={'https://www.tiktok.com/'}
+                  className="contacts-link"
+                  rel="noopener noreferrer nofollow"
+                  target="_blank"
+                >
                   tiktok
                 </a>
               </div>
